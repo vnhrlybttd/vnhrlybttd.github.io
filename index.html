@@ -1,1095 +1,369 @@
 <!DOCTYPE html>
 
-<html>
-
-<head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=11" />
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="css/index.css">
-
-
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vin Battad | NetSuite Administrator and Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#0D0F12",
+                        surface: "#15181D",
+                        surface_elevated: "#1E2229",
+                        border_subtle: "rgba(154, 160, 166, 0.1)",
+                        text_primary: "#ECECEC",
+                        text_muted: "#9AA0A6",
+                        accent: "#F5A623",
+                        accent_hover: "#D48B1C"
+                    },
+                    fontFamily: {
+                        headline: ["Space Grotesk", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                        label: ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        md: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+        section[id] { scroll-margin-top: 6rem; }
+        body {
+            background-color: #0D0F12;
+            color: #ECECEC;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-headline {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .hero-glow {
+            background: radial-gradient(circle at center, rgba(245, 166, 35, 0.15) 0%, rgba(13, 15, 18, 0) 70%);
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0D0F12; }
+        ::-webkit-scrollbar-thumb { background: #1E2229; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #F5A623; }
+    </style>
 </head>
+<body class="antialiased selection:bg-accent selection:text-background">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border_subtle flex justify-between items-center px-8 py-4 max-w-7xl mx-auto left-0 right-0">
+<a class="flex items-center gap-2 group" href="#">
+<span class="flex items-center justify-center w-9 h-9 rounded-md bg-accent text-background font-headline font-bold text-sm tracking-tighter">VB</span>
+<span class="font-headline font-bold text-base tracking-tight text-text_primary group-hover:text-accent transition-colors">Vin Battad</span>
+</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline tracking-tight uppercase text-xs font-bold text-text_muted hover:text-accent transition-all duration-300" href="#work">Work</a>
+<a class="font-headline tracking-tight uppercase text-xs font-bold text-text_muted hover:text-accent transition-all duration-300" href="#experience">Experience</a>
+<a class="font-headline tracking-tight uppercase text-xs font-bold text-text_muted hover:text-accent transition-all duration-300" href="#certifications">Certifications</a>
+<a class="font-headline tracking-tight uppercase text-xs font-bold text-text_muted hover:text-accent transition-all duration-300" href="#skills">Skills</a>
+<a class="font-headline tracking-tight uppercase text-xs font-bold text-text_muted hover:text-accent transition-all duration-300" href="#contact">Contact</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center px-4 py-2 text-xs font-headline font-bold uppercase tracking-tight text-accent border border-accent rounded-full hover:bg-accent hover:text-background transition-all duration-300 active:scale-95 cursor-pointer" href="Vin_Battad_Resume.pdf" target="_blank">
+            Resume
+        </a>
+<!-- Mobile Menu Button -->
+<button id="menuBtn" aria-label="Open menu" class="md:hidden text-text_primary">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</nav>
+<div id="mobileMenu" class="hidden md:hidden fixed top-[64px] left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border_subtle px-8 py-6 flex flex-col gap-5"><a class="font-headline tracking-tight uppercase text-sm font-bold text-text_muted hover:text-accent transition-colors" href="#work">Work</a><a class="font-headline tracking-tight uppercase text-sm font-bold text-text_muted hover:text-accent transition-colors" href="#experience">Experience</a><a class="font-headline tracking-tight uppercase text-sm font-bold text-text_muted hover:text-accent transition-colors" href="#certifications">Certifications</a><a class="font-headline tracking-tight uppercase text-sm font-bold text-text_muted hover:text-accent transition-colors" href="#skills">Skills</a><a class="font-headline tracking-tight uppercase text-sm font-bold text-text_muted hover:text-accent transition-colors" href="#contact">Contact</a><a class="font-headline tracking-tight uppercase text-sm font-bold text-accent" href="Vin_Battad_Resume.pdf" target="_blank">Resume</a></div>
+<!-- Main Content -->
+<main class="pt-24 px-6 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="min-h-[85vh] flex flex-col justify-center py-12 md:py-24 relative">
+<div class="absolute top-1/4 right-1/4 w-96 h-96 hero-glow -z-10 pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<span class="font-headline text-accent text-xs font-bold tracking-widest uppercase">NetSuite Administrator and Developer</span>
+<h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-text_primary leading-[1.1] tracking-tight">
+                        I build the ERP integrations and automations that keep finance teams running.
+                    </h1>
+<p class="font-body text-lg text-text_muted leading-relaxed max-w-2xl">
+                        I design and manage NetSuite systems, connecting ERP, CRM, banking, and communication platforms into workflows that are reliable, scalable, and easy to trust.
+                    </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<a class="inline-flex items-center justify-center px-6 py-3 bg-accent text-background font-headline font-bold text-sm uppercase tracking-tight rounded hover:bg-accent_hover transition-colors active:scale-95" href="#work">
+                            View selected work
+                        </a>
+<a class="inline-flex items-center justify-center px-6 py-3 border border-text_muted text-text_primary hover:border-accent hover:text-accent font-headline font-bold text-sm uppercase tracking-tight rounded transition-colors active:scale-95" href="#contact">
+                            Get in touch
+                        </a>
+</div>
+</div>
+<div class="lg:col-span-5 flex justify-center lg:justify-end relative">
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 border-2 border-accent/50 bg-surface">
+<img class="w-full h-full object-cover object-center rounded-full" data-alt="Professional circular headshot portrait of Vin Battad, an Asian male with dark hair and a neat beard, wearing a dark grey blazer over a black crewneck sweater. The background is a slightly textured, soft off-white canvas. The image has a subtle warm amber glow effect behind it, fitting a premium dark mode UI." src="img/me.jpg"/>
+</div>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border_subtle">
+<div class="flex flex-col gap-2">
+<span class="font-headline text-accent text-2xl font-bold">5+</span>
+<span class="font-body text-sm text-text_muted">yrs in NetSuite and SuiteCloud</span>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="hidden md:block absolute left-[-2rem] top-1/2 -translate-y-1/2 w-px h-12 bg-border_subtle"></div>
+<span class="font-headline text-accent text-2xl font-bold"><span class="material-symbols-outlined text-3xl">sync_alt</span></span>
+<span class="font-body text-sm text-text_muted">ERP, CRM and banking integrations</span>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="hidden md:block absolute left-[-2rem] top-1/2 -translate-y-1/2 w-px h-12 bg-border_subtle"></div>
+<span class="font-headline text-accent text-2xl font-bold">12</span>
+<span class="font-body text-sm text-text_muted">platform certifications</span>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="hidden md:block absolute left-[-2rem] top-1/2 -translate-y-1/2 w-px h-12 bg-border_subtle"></div>
+<span class="font-headline text-accent text-2xl font-bold"><span class="material-symbols-outlined text-3xl">group</span></span>
+<span class="font-body text-sm text-text_muted">Built for finance and operations teams</span>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24" id="about">
+<span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-8 block">About</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-headline text-3xl md:text-4xl font-bold text-text_primary leading-tight">
+                        A developer who thinks in systems and outcomes.
+                    </h2>
+</div>
+<div>
+<p class="font-body text-base text-text_muted leading-relaxed">
+                        I am a NetSuite Administrator and Integration Developer with a strong SuiteCloud background across SuiteScript, SuiteFlow, and SuiteAnalytics. I enjoy turning messy manual processes into clean automated workflows that connect the tools a business already uses. Alongside the technical work I bring a creative side from years in web development, graphic design, and video editing, so the things I ship are efficient and genuinely pleasant to use.
+                    </p>
+</div>
+</div>
+</section>
+<!-- What I Do Section -->
+<section class="py-24 border-t border-border_subtle" id="expertise">
+<span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">What I do</span>
+<h2 class="font-headline text-3xl font-bold text-text_primary mb-12">Core expertise</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface border border-border_subtle rounded-lg p-6 hover:border-accent/50 transition-colors">
+<span class="material-symbols-outlined text-accent text-3xl mb-4">code_blocks</span>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-3">SuiteCloud Development</h3>
+<p class="font-body text-sm text-text_muted leading-relaxed">
+                        Custom SuiteScript, SuiteFlow workflows, and SuiteAnalytics saved searches built around how a team actually works.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-border_subtle rounded-lg p-6 hover:border-accent/50 transition-colors">
+<span class="material-symbols-outlined text-accent text-3xl mb-4">hub</span>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-3">System Integrations</h3>
+<p class="font-body text-sm text-text_muted leading-relaxed">
+                        Connecting NetSuite with Salesforce, Stripe, HubSpot, Aircall, and Microsoft Teams through reliable API driven data flows.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface border border-border_subtle rounded-lg p-6 hover:border-accent/50 transition-colors">
+<span class="material-symbols-outlined text-accent text-3xl mb-4">manufacturing</span>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-3">Automation and Optimization</h3>
+<p class="font-body text-sm text-text_muted leading-relaxed">
+                        Replacing repetitive manual steps with automations that scale and reduce errors.
+                    </p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface border border-border_subtle rounded-lg p-6 hover:border-accent/50 transition-colors">
+<span class="material-symbols-outlined text-accent text-3xl mb-4">query_stats</span>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-3">BI and Reporting</h3>
+<p class="font-body text-sm text-text_muted leading-relaxed">
+                        Dashboards and reports that give finance and operations real visibility into the numbers.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-24 border-t border-border_subtle" id="experience">
+<span class="font-headline text-accent text-xs font-bold tracking-widest uppercase mb-4 block">EXPERIENCE</span>
+<h2 class="font-headline text-3xl font-bold text-text_primary mb-12">Where I have worked</h2>
+<div class="relative border-l border-accent ml-3 md:ml-4 space-y-12 pb-4">
+<div class="relative pl-8 md:pl-10">
+<div class="absolute w-3 h-3 bg-accent rounded-full left-[-6.5px] top-1.5 border-2 border-background"></div>
+<h3 class="font-headline text-xl font-bold text-text_primary">Tribute Technology</h3>
+<p class="font-body text-sm text-accent font-medium mb-1">NetSuite Administrator and Developer</p>
+<p class="font-body text-xs text-text_muted mb-4 uppercase tracking-wide">Middleton, Wisconsin, Remote   |   Dec 2023 to Present</p>
+<p class="font-body text-sm text-text_muted leading-relaxed">Primary system administrator and developer for NetSuite, Salesforce, and Gladly. Led the Wells Fargo bank integration that enabled secure automated connectivity and cleaner reconciliation. Built digital W9 form solutions that modernized data collection across the company.</p>
+</div>
+<div class="relative pl-8 md:pl-10">
+<div class="absolute w-3 h-3 bg-accent rounded-full left-[-6.5px] top-1.5 border-2 border-background"></div>
+<h3 class="font-headline text-xl font-bold text-text_primary">ServiceRocket</h3>
+<p class="font-body text-sm text-accent font-medium mb-1">NetSuite Associate Technical Consultant</p>
+<p class="font-body text-xs text-text_muted mb-4 uppercase tracking-wide">Palo Alto, California   |   Apr 2022 to Aug 2023</p>
+<p class="font-body text-sm text-text_muted leading-relaxed">Delivered tailored NetSuite customizations that lifted client business performance. Partnered with cross functional teams to translate requirements into working solutions and clear estimates.</p>
+</div>
+<div class="relative pl-8 md:pl-10">
+<div class="absolute w-3 h-3 bg-accent rounded-full left-[-6.5px] top-1.5 border-2 border-background"></div>
+<h3 class="font-headline text-xl font-bold text-text_primary">Ceana Technology</h3>
+<p class="font-body text-sm text-accent font-medium mb-1">NetSuite Associate Developer</p>
+<p class="font-body text-xs text-text_muted mb-4 uppercase tracking-wide">Cavite, Philippines   |   Aug 2021 to Apr 2022</p>
+<p class="font-body text-sm text-text_muted leading-relaxed">Built NetSuite customizations, workflows, and scripts alongside senior developers. Tested, debugged, and supported existing solutions to keep operations running smoothly.</p>
+</div>
+<div class="relative pl-8 md:pl-10">
+<div class="absolute w-3 h-3 bg-accent rounded-full left-[-6.5px] top-1.5 border-2 border-background"></div>
+<h3 class="font-headline text-xl font-bold text-text_primary">Freelance Web Developer and Designer</h3>
+<p class="font-body text-sm text-accent font-medium mb-1">S and S Holdings, Exquis Solutions, and Mercancias</p>
+<p class="font-body text-xs text-text_muted mb-4 uppercase tracking-wide">Manila   |   2017 to 2021</p>
+<p class="font-body text-sm text-text_muted leading-relaxed">Designed brand logos and built CMS and e commerce websites for growing local businesses.</p>
+</div>
+</div>
+</section>
+<!-- Selected Work Section -->
+<section class="py-24 border-t border-border_subtle" id="work"><span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">WORK</span><h2 class="font-headline text-3xl font-bold text-text_primary mb-12">Selected work</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden flex items-center justify-center"><div class="absolute inset-0" style="background:radial-gradient(circle at center, rgba(245,166,35,0.14), transparent 70%)"></div><span class="material-symbols-outlined text-accent text-6xl relative opacity-90">account_balance</span><div class="absolute bottom-3 right-4 font-headline text-[10px] tracking-widest uppercase text-text_muted">NetSuite</div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">ERP Integration</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">Wells Fargo Bank Integration</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">Secure automated bank connectivity inside NetSuite that improved financial accuracy and made reconciliation far faster.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">NetSuite</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">SuiteScript</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Banking API</span></div></div></div><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden flex items-center justify-center"><div class="absolute inset-0" style="background:radial-gradient(circle at center, rgba(245,166,35,0.14), transparent 70%)"></div><span class="material-symbols-outlined text-accent text-6xl relative opacity-90">monitoring</span><div class="absolute bottom-3 right-4 font-headline text-[10px] tracking-widest uppercase text-text_muted">NetSuite</div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">ERP Dashboard</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">AR Collections Dashboard</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">A NetSuite dashboard that surfaces receivables and collections status, so the finance team can prioritize follow ups and shorten the cash cycle.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">NetSuite</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">SuiteAnalytics</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Finance</span></div></div></div><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden flex items-center justify-center"><div class="absolute inset-0" style="background:radial-gradient(circle at center, rgba(245,166,35,0.14), transparent 70%)"></div><span class="material-symbols-outlined text-accent text-6xl relative opacity-90">description</span><div class="absolute bottom-3 right-4 font-headline text-[10px] tracking-widest uppercase text-text_muted">NetSuite</div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">ERP Solution</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">W9 Portal and Dashboards</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">A digital W9 portal with reporting dashboards that replaced manual collection and tightened vendor data and compliance.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">NetSuite</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">SuiteScript</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Automation</span></div></div></div><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden flex items-center justify-center"><div class="absolute inset-0" style="background:radial-gradient(circle at center, rgba(245,166,35,0.14), transparent 70%)"></div><span class="material-symbols-outlined text-accent text-6xl relative opacity-90">approval</span><div class="absolute bottom-3 right-4 font-headline text-[10px] tracking-widest uppercase text-text_muted">Teams + NetSuite</div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">ERP Workflow</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">AP Approval via Teams and NetSuite</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">An accounts payable approval flow that connects NetSuite with Microsoft Teams, so approvers can review and sign off on bills right where they work.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">NetSuite</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Microsoft Teams</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">SuiteFlow</span></div></div></div><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden"><img src="img/payroll-admin.png" alt="Payroll system admin dashboard" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"/><div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">Full Stack</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">Payroll System with Face Recognition</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">A multi role payroll platform with attendance monitoring, payslips, approvals, and audit trails.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Laravel</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">MySQL</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">JavaScript</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Bootstrap</span></div></div></div><div class="group bg-surface border border-border_subtle rounded-lg overflow-hidden hover:border-accent/50 transition-colors flex flex-col"><div class="aspect-video bg-surface_elevated w-full relative overflow-hidden"><img src="img/ss-holdings.png" alt="S and S Holdings website" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"/><div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div></div><div class="p-6 flex flex-col flex-grow"><span class="font-headline text-accent text-xs font-bold tracking-wider uppercase mb-2">Web</span><h3 class="font-headline text-xl font-bold text-text_primary mb-3 group-hover:text-accent transition-colors">CMS Websites for S and S Holdings and WeTea</h3><p class="font-body text-sm text-text_muted leading-relaxed mb-6 flex-grow">Brand websites built and managed in Webflow so the teams could update content with ease.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Webflow</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">CMS</span><span class="px-3 py-1 bg-background text-text_muted text-xs font-medium rounded-full border border-border_subtle">Design</span></div></div></div></div></section>
+<!-- Certifications Section -->
+<section class="py-24 border-t border-border_subtle" id="consulting"><span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">CONSULTING</span><h2 class="font-headline text-3xl font-bold text-text_primary mb-4">Earlier NetSuite consulting</h2><p class="font-body text-text_muted leading-relaxed max-w-2xl mb-12">Before Tribute, I delivered NetSuite customizations and integrations as a consultant for clients across Singapore, the Netherlands, Australia, and the Philippines.</p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Integration</span><span class="font-body text-[11px] text-text_muted">Singapore · 1 year</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Payment Gateway Integration via SFTP</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">SFTP based payment gateway and bank reconciliation into NetSuite, with custom PDF transaction layouts and custom records.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Map/Reduce</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Client Script</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">PDF</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Integration</span><span class="font-body text-[11px] text-text_muted">Netherlands · 8 months</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Web Service Integration with a Third Party App</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">Batch creation of custom records through a web service integration, with solution design and a full requirements document.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Map/Reduce</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">SQL</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Integration</span><span class="font-body text-[11px] text-text_muted">Australia · 1 year</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Procure to Pay Batch Integration</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">Procure to pay batch processing integrated with a third party application, then refactored into clean, maintainable code.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Map/Reduce</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Handlebars</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Customization</span><span class="font-body text-[11px] text-text_muted">Australia · 1 year</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Dedicated Developer for an Enterprise Client</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">Embedded developer customizing scripts, designing proposed solutions, and building reporting Suitelets for a large account.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Map/Reduce</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Automation</span><span class="font-body text-[11px] text-text_muted">Netherlands</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Item Receipt to EDI Automation</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">On save, a Map/Reduce builds an EDI file from a saved search and emails it straight to the customer.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Map/Reduce</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">EDI</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Customization</span><span class="font-body text-[11px] text-text_muted">Philippines · 2 months</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Allocations Suitelet</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">A customized allocations Suitelet built alongside the technical lead.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">jQuery</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Automation</span><span class="font-body text-[11px] text-text_muted">Singapore · 2 days</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Scrap Booking and Price Population</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">Automatic scrap booking and price population on transaction records.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Client Script</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Customization</span><span class="font-body text-[11px] text-text_muted">Singapore · 3 days</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Barcode PDF and Custom Form Popup</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">A custom form popup with a PDF barcode printout.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Suitelet</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">User Event</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Client Script</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">PDF</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-2 hover:border-accent/50 transition-colors"><div class="flex items-center justify-between gap-2"><span class="font-headline text-accent text-[11px] font-bold tracking-wider uppercase">Customization</span><span class="font-body text-[11px] text-text_muted">Australia · 5 days</span></div><h3 class="font-headline text-base font-bold text-text_primary leading-snug">Custom Line Item Dropdown</h3><p class="font-body text-sm text-text_muted leading-relaxed flex-grow">A customized dropdown on transaction line items.</p><div class="flex flex-wrap gap-1.5 mt-2"><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Client Script</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">Semantic UI</span><span class="px-2.5 py-0.5 bg-background text-text_muted text-[11px] font-medium rounded-full border border-border_subtle">jQuery</span></div></div></div><p class="font-body text-sm text-text_muted leading-relaxed mt-8 max-w-3xl">Proof of concept integrations with Celigo, Slack, Discord, Clockify, and Shopify. Plus ongoing work refactoring SuiteScript 1.x to 2.x and migrating saved searches to SuiteQL.</p></section><section class="py-24 border-t border-border_subtle" id="certifications"><span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">CREDENTIALS</span><h2 class="font-headline text-3xl font-bold text-text_primary mb-12">Certifications</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Oracle NetSuite Certified Financial Associate</div><div class="font-body text-xs text-text_muted mt-1">NetSuite · Issued Nov 2025</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 323311660N16290GC10</span><a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=5495C7EE7FB47CE239E48A81C69267F5D26F1705358EF0DC0C094991574F194A" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Oracle NetSuite Certified BI and Reporting Associate</div><div class="font-body text-xs text-text_muted mt-1">NetSuite · Issued Nov 2025</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 323311660N16724GC10</span><a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E940F9AD040DB438BE54EDE4C34F4E9F19937251FCA0ADDEB2DCC485088F336D" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Oracle NetSuite Certified AI Foundations Associate</div><div class="font-body text-xs text-text_muted mt-1">NetSuite · Issued Oct 2025</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 323311660N16765GC10</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">integrator.io Mastery Level 3: MASTER</div><div class="font-body text-xs text-text_muted mt-1">Celigo · Issued Mar 2023</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 148260778</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">integrator.io Mastery Level 2: SEASONED</div><div class="font-body text-xs text-text_muted mt-1">Celigo · Issued Mar 2023</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 148255929</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">integrator.io Mastery Level 1: SKILLED</div><div class="font-body text-xs text-text_muted mt-1">Celigo · Issued Dec 2022</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 140201659</span></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Oracle SQL</div><div class="font-body text-xs text-text_muted mt-1">Great Learning · Issued Nov 2023</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 59439</span><a href="https://www.mygreatlearning.com/certificate/WKUPTPVB" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Service Hub Software</div><div class="font-body text-xs text-text_muted mt-1">HubSpot Academy · Issued Jun 2025 · Expires Jul 2026</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 5c792ea38d014c7aa941bf83b2a7717e</span><a href="https://app.hubspot.com/academy/achievements/tnmv3y6g/en/1/vin-battad/service-hub-software" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Aircall Admin</div><div class="font-body text-xs text-text_muted mt-1">Aircall · Issued Jun 2025</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 4facff0c-3775-4c43-b78f-35c0a1ce6b69</span><a href="https://learn.aircall.com/app/certificate/4facff0c-3775-4c43-b78f-35c0a1ce6b69" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Aircall Agent</div><div class="font-body text-xs text-text_muted mt-1">Aircall · Issued Jun 2025</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><span class="font-mono text-[10px] text-text_muted break-all">ID 80885fa0-20a0-4b15-82b2-14bbcd143c8f</span><a href="https://learn.aircall.com/app/certificate/80885fa0-20a0-4b15-82b2-14bbcd143c8f" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Gladly Administrator Certification</div><div class="font-body text-xs text-text_muted mt-1">Gladly · Issued Dec 2023</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><a href="https://help.gladly.com/certificate-verification/12D17DA03-12D2807C8-12CE9ECFD/" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface border border-border_subtle rounded-lg p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"><div class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-xl shrink-0 mt-0.5">verified</span><div><div class="font-headline text-sm font-bold text-text_primary leading-snug">Gladly Routing Logic Certificate Course</div><div class="font-body text-xs text-text_muted mt-1">Gladly · Issued Jul 2024</div></div></div><div class="mt-auto pt-3 border-t border-border_subtle flex flex-col gap-2"><a href="https://help.gladly.com/certificate-verification/12D17DA03-156A3FFE7-12CE9ECFD/" target="_blank" rel="noopener" class="font-headline text-[11px] font-bold uppercase tracking-wider text-accent hover:text-accent_hover inline-flex items-center gap-1 self-start">Verify credential<span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div></div></section>
+<!-- Skills Section -->
+<section class="py-24 border-t border-border_subtle" id="skills">
+<span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">TOOLKIT</span>
+<h2 class="font-headline text-3xl font-bold text-text_primary mb-12">Skills and tools</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-6">ERP and Integration</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">NetSuite</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">SuiteScript</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">SuiteFlow</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">SuiteAnalytics</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Salesforce</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Gladly</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">HubSpot</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Aircall</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Microsoft Teams</span><span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Stripe</span><span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Breadwinner (Salesforce)</span><span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">REST APIs</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-6">Development</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">PHP</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Laravel</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">JavaScript</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Vue.js</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">HTML5</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">CSS3</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">MySQL</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">PostgreSQL</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Bootstrap</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Git and GitHub</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-lg font-bold text-text_primary mb-6">Design and Media</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Webflow</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Adobe Photoshop</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Adobe Illustrator</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Premiere Pro</span>
+<span class="px-4 py-2 bg-surface text-text_primary text-sm rounded border border-border_subtle">Filmora</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Creative Work Section -->
+<section class="py-24 border-t border-border_subtle" id="creative">
+<div class="flex flex-col md:flex-row gap-12 items-start">
+<div class="w-full md:w-1/3">
+<span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">BEYOND CODE</span>
+<h2 class="font-headline text-3xl font-bold text-text_primary mb-4">Branding and design</h2>
+<p class="font-body text-sm text-text_muted leading-relaxed">Before ERP, I spent years building brands. Logos, posters, and event design for clients across retail and food.</p>
+</div>
+<div class="w-full md:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="aspect-square bg-white/5 rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors flex items-center justify-center p-6"><img src="img/logo-mkt.png" alt="MKT logo" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"/></div>
+<div class="aspect-square bg-surface_elevated rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors"><img src="img/poster-avocado.png" alt="Avocado shake poster" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/></div>
+<div class="aspect-square bg-white/5 rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors flex items-center justify-center p-6"><img src="img/logo-wetea.png" alt="WeTea logo" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"/></div>
+<div class="aspect-square bg-surface_elevated rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors"><img src="img/poster-strawberry.png" alt="Strawberry shake poster" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/></div>
+<div class="aspect-square bg-white/5 rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors flex items-center justify-center p-6"><img src="img/logo-sunflower.png" alt="Sunflower logo" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"/></div>
+<div class="aspect-square bg-surface_elevated rounded-lg border border-border_subtle relative overflow-hidden group hover:border-accent/50 transition-colors"><img src="img/poster-mango.png" alt="Mango shake poster" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/></div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 border-t border-border_subtle" id="contact">
+<span class="font-headline text-text_muted text-xs font-bold tracking-widest uppercase mb-4 block">CONTACT</span>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<h2 class="font-headline text-4xl md:text-5xl font-bold text-text_primary leading-tight mb-6">Let us build something dependable.</h2>
+<p class="font-body text-lg text-text_muted mb-8">I am open to NetSuite administration, development, and integration work. Reach out and let us talk.</p>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-accent text-background font-headline font-bold text-sm uppercase tracking-tight rounded hover:bg-accent_hover transition-colors active:scale-95" href="mailto:vhbattad@gmail.com">
+                        Email me
+                    </a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-accent text-2xl mt-1">mail</span>
+<div>
+<h4 class="font-headline font-bold text-text_primary text-sm uppercase tracking-wider mb-1">Email</h4>
+<a class="font-body text-text_muted hover:text-accent transition-colors" href="mailto:vhbattad@gmail.com">vhbattad@gmail.com</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-accent text-2xl mt-1">call</span>
+<div>
+<h4 class="font-headline font-bold text-text_primary text-sm uppercase tracking-wider mb-1">Phone</h4>
+<a class="font-body text-text_muted hover:text-accent transition-colors" href="tel:+639054983141">+63 905 498 3141</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-accent text-2xl mt-1">link</span>
+<div>
+<h4 class="font-headline font-bold text-text_primary text-sm uppercase tracking-wider mb-1">LinkedIn</h4>
+<a class="font-body text-text_muted hover:text-accent transition-colors" href="https://linkedin.com/in/vbattad" target="_blank">linkedin.com/in/vbattad</a>
+</div>
+</div>
+
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-accent text-2xl mt-1">location_on</span>
+<div>
+<h4 class="font-headline font-bold text-text_primary text-sm uppercase tracking-wider mb-1">Location</h4>
+<span class="font-body text-text_muted">Manila, Philippines</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background w-full py-12 border-t border-border_subtle mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6">
+<div class="flex flex-col gap-1 items-center md:items-start">
+<span class="font-headline font-bold text-lg text-text_primary">Vin Battad. NetSuite Administrator and Developer.</span>
+
+</div>
+<div class="flex items-center gap-6">
+<a class="font-body text-sm text-text_muted hover:text-text_primary transition-colors" href="https://www.linkedin.com/in/vbattad" target="_blank">LinkedIn</a>
+
+<a class="font-body text-sm text-text_muted hover:text-text_primary transition-colors" href="mailto:vhbattad@gmail.com">Email</a>
+</div>
+</div>
+</footer>
 
-<body data-bs-spy="scroll" data-bs-target="#navbar">
-
-
-
-    <!--HOME-->
-    <div data-aos="fade-down">
-        <div id="home">
-            <div class="text-dark home" id="particles-js">
-                <h5 class="hello">HELLO, WORLD.</h5>
-                <h5 class="name">I'm Vin Harley Battad.</h5>
-                <h5 class="title">A
-                    <span class="txt-rotate" data-period="2000"
-                        data-rotate='[ "Back-End Developer.", "Web Developer." , "Front-End Developer" ]'></span>
-                </h5>
-                <a class="icon-scroll" href="#about"></a>
-            </div>
-        </div>
-    </div>
-    <!--HOME-->
-
-    <!--NAVBAR-->
-
-    <nav class="navbar navbar-expand-sm navbarfixed bg-dark navbar-dark" id="navbar" data-aos="fade-in">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span> <i class="bi bi-list text-white"></i></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav mx-auto">
-                    <ul class="nav list-inline">
-                        <li class="list-inline-item">
-                            <a class="nav-link" aria-current="page" href="#home">HOME</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="#about">ABOUT</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="#skills">SKILLS</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="#projects">PROJECTS</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-
-    <!--NAVBAR-->
-
-
-
-    <div class="container">
-
-        <!--ABOUT-->
-        <div class="bg-about h-100" data-aos="fade-right">
-
-            <div class="about mx-auto mb-5" id="about">
-                <div class="container">
-                    <div class="row row-picture">
-                        <div class="col-sm-4">
-                            <img src="img/me.png" alt="Avatar" class="avatar mx-auto d-block">
-                        </div>
-                        <div class="col-sm-8 text-center">
-                            <h1 class="full-name"> VIN HARLEY M. BATTAD</h1>
-                            <h5><i class="bi bi-geo-alt-fill about-text-info"> </i>Blk 2 Lot 57 Vaticano Street
-                                Courtyards
-                                Portofino South</h5>
-                            <h5><i class="bi bi-phone-fill about-text-info"> </i>+63 905 498 3141</h5>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal">
-                                <i class="bi bi-file-earmark-person-fill"></i> Resume
-                            </button>
-                            <div class="d-flex justify-content-around flex-wrap pt-2">
-                                <div class="p-1">
-                                    <i class="bi bi-google h1"></i>
-                                    <h6>vhbattad@gmail.com</h6>
-                                </div>
-                                <div class="p-1">
-                                    <i class="bi bi-github h1"></i>
-                                    <h6>vnhrlybttd</h6>
-                                </div>
-                                <div class="p-1">
-                                    <i class="bi bi-facebook h1"></i>
-                                    <h6>vnhrlybttd</h6>
-                                </div>
-                                <div class="p-1">
-                                    <i class="bi bi-linkedin h1"></i>
-                                    <h6>vinbattad</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 mt-1 rounded shadow box-detail mx-auto">
-                        <p>Hard-working and self-motivate individual with proficiency in
-                            PHP
-                            Laravel, HTML5, CSS, and JavaScript
-                            with a basic knowledge in Java, C++ and Visual Basic, as well as an ability in writing
-                            clean,
-                            efficient
-                            code and to communicate effectively in a team setting. Eager to learn new things in this
-                            changing
-                            environment. </p>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-
-
-
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Resume</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body vh-100">
-
-
-                            <object data="ResumePort.pdf" type="application/pdf" width="100%" height="100%">
-
-                            </object>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" download href="ResumePort.pdf"><i
-                                    class="bi bi-download"></i> Download Resume</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <!--ABOUT-->
-
-        <!--SKILLS-->
-        <div class="skills h-100">
-
-            <div class="container container-skills mb-5">
-
-                <div class="row text-center" id="skills">
-
-                    <div class="card rounded shadow p-3 w-100" data-aos="flip-up" style="margin-bottom:10%;">
-                        <i class="bi bi-file-post text-center h1"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">Multimedia / Designer</h5>
-                            <p class="card-text">I value simple content structure, clean design patterns and
-                                thoughtful
-                                interactions.</p>
-                            <hr>
-                            <h5 class="text-primary"> Things i enjoy designing: </h5>
-                            <p>UX/UI, Logos, Powerpoints, Posters, Business Cards, Events
-                            </p>
-                            <img src="https://img.icons8.com/nolan/64/business.png" />
-                            <img src="https://img.icons8.com/nolan/64/pricing-structure.png" />
-                            <img src="https://img.icons8.com/nolan/64/event-accepted.png" />
-                            <hr>
-                            <h5 class="text-primary"> Design Tools: </h5>
-                            <img src="https://img.icons8.com/color/48/000000/webflow.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/adobe-photoshop.png" />
-                            <img src="https://img.icons8.com/color/48/000000/adobe-illustrator.png" />
-                            <img src="https://img.icons8.com/color/48/000000/adobe-premiere-pro.png" />
-                            <img src="https://img.icons8.com/nolan/64/filmora.png" />
-                            <hr>
-                            <h5 class="text-primary"> Microsoft Tools: </h5>
-                            <img src="https://img.icons8.com/color/48/000000/ms-word.png" />
-                            <img src="https://img.icons8.com/color/48/000000/ms-excel.png" />
-                            <img src="https://img.icons8.com/color/48/000000/ms-powerpoint.png" />
-                        </div>
-                    </div>
-
-
-
-                    <div class="card rounded shadow p-3 w-100 mb-4" data-aos="flip-down">
-                        <i class="bi bi-code-square text-center h1"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">Front & Back End Developer</h5>
-                            <p class="card-text">I like to code things from scratch that my layouts will work on
-                                any
-                                device and enjoy bringing ideas to life in the browser.</p>
-                            <p class="card-text"></p>
-                            <hr>
-                            <h5 class="text-primary"> Languages i speak: </h5>
-                            <img src="https://img.icons8.com/fluent/48/000000/laravel.png" />
-                            <img src="https://img.icons8.com/color/48/000000/vue-js.png" />
-                            <img src="https://img.icons8.com/color/48/000000/html-5.png" />
-                            <img src="https://img.icons8.com/color/48/000000/css3.png" />
-                            <img src="https://img.icons8.com/color/48/000000/javascript.png" />
-                            <hr>
-                            <h5 class="text-primary"> Basic Knowledge: </h5>
-                            <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" />
-                            <img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/visual-basic.png" />
-                            <hr>
-                            <h5 class="text-primary"> Dev Tools: </h5>
-                            <img src="https://img.icons8.com/fluent/48/000000/visual-studio-code-2019.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/github.png" />
-                            <img src="img/XAMPP-icon.png" height="50">
-                            <img src="https://img.icons8.com/color/48/000000/bootstrap.png" />
-
-
-                            <hr>
-                            <h5 class="text-primary"> Server Management / Cloud Services / Database: </h5>
-                            <img src="img/Laravel-Forge.png" height="50">
-                            <img src="https://img.icons8.com/windows/32/000000/digital-ocean.png" />
-                            <img src="https://img.icons8.com/ios-filled/50/000000/mysql-logo.png" />
-                            <img src="https://img.icons8.com/color/48/000000/postgreesql.png" />
-
-
-
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-        <!--SKILLS-->
-
-        <!--PROJECTS-->
-        <div class="projects h-100" id="projects">
-
-            <div class="container container-projects ">
-
-                <div class="row mt-5">
-
-                    <div class="col-lg-12 shadow-lg p-5 project-box mb-3" data-aos="zoom-in">
-
-                        <div class="text-center border-bottom border-light mb-2">
-                            <h4 class="text-white">WEBSITE</h4>
-                        </div>
-
-
-                        <h4 class="text-left text-white">Web-Based Payroll System with Implementation of Face
-                            Recognition for
-                            Attendance Monitoring</h4>
-                        <div class="tab-pane fade show active" id="v-pills-Laravel" role="tabpanel"
-                            aria-labelledby="v-pills-home-tab">
-
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                        href="#pills-superadmin" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Super Admin</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-admin"
-                                        role="tab" aria-controls="pills-profile" aria-selected="false">Admin</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                        href="#pills-coadmin" role="tab" aria-controls="pills-contact"
-                                        aria-selected="false">Co Admin</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                        href="#pills-employees" role="tab" aria-controls="pills-contact"
-                                        aria-selected="false">Employees</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-hr"
-                                        role="tab" aria-controls="pills-contact" aria-selected="false">HR</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-login"
-                                        role="tab" aria-controls="pills-contact" aria-selected="false">Login</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="pills-tabContent">
-
-                                <div class="tab-pane fade show active" id="pills-superadmin" role="tabpanel"
-                                    aria-labelledby="pills-superadmin-tab">
-
-
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="superadmin" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#superadmin" data-bs-slide-to="0" class="active">
-                                            </li>
-                                            <li data-bs-target="#superadmin" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#superadmin" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/SUPERADMIN/User Management.PNG"
-                                                    class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <img src="img/Laravel/SUPERADMIN/Database.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/SUPERADMIN/Audit Trail.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/SUPERADMIN/Add Accounts.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/SUPERADMIN/Change Password.PNG"
-                                                    class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#superadmin" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#superadmin" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-admin" role="tabpanel"
-                                    aria-labelledby="pills-profile-tab">
-
-
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="admin" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#admin" data-bs-slide-to="0" class="active"></li>
-                                            <li data-bs-target="#admin" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#admin" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/Admin/DASHBOARD.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <img src="img/Laravel/Admin/PAYROLL APPROVAL.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/Admin/PC APPROVAL.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/Admin/REPORTS APPROVAL.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/Admin/CHANGE PASSWORD.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#admin" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#admin" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-coadmin" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="coadmin" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#coadmin" data-bs-slide-to="0" class="active"></li>
-                                            <li data-bs-target="#coadmin" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#coadmin" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/COADMIN/DASHBOARD.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <img src="img/Laravel/COADMIN/EMPLOYEE MANAGEMENT.PNG"
-                                                    class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/COADMIN/EM EDIT.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/COADMIN/MONTH SUMMARY REPORTS STEP 2.PNG"
-                                                    class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/COADMIN/PRINT PAYSLIPS.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#coadmin" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#coadmin" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-employees" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="employees" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#employees" data-bs-slide-to="0" class="active">
-                                            </li>
-                                            <li data-bs-target="#employees" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#employees" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/EMPLOYEES/DASHBOARD.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <img src="img/Laravel/EMPLOYEES/TIME LOGS.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/EMPLOYEES/PROFILE.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/EMPLOYEES/CHANGEPASSWORD.PNG"
-                                                    class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/EMPLOYEES/PAYSLIPS.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#employees" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#employees" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-hr" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="hr" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#hr" data-bs-slide-to="0" class="active"></li>
-                                            <li data-bs-target="#hr" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#hr" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/HR/Emplopyee Management.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <img src="img/Laravel/HR/Cost Center.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/HR/EMPLOYEE EDIT.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/HR/Employement Status.PNG" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/Laravel/HR/ES ADD.PNG" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#hr" role="button" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#hr" role="button" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-login" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-
-                                    <!-- CAROUSEL IMAGES -->
-
-                                    <div id="login" class="carousel carousel-dark slide carousel-fade"
-                                        data-bs-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-bs-target="#login" data-bs-slide-to="0" class="active"></li>
-                                            <li data-bs-target="#login" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#login" data-bs-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner"
-                                            style="max-width:1000px; max-height:600px !important;">
-                                            <div class="carousel-item active" data-bs-interval="10000">
-                                                <img src="img/Laravel/LOGIN/LOGIN.PNG" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#login" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                        <a class="carousel-control-next" href="#login" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                        </a>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="programs text-center bg-light mt-2">
-                            <h4>PROGRAMS AND DEV TOOLS</h4>
-                            <img src="https://img.icons8.com/fluent/48/000000/laravel.png" />
-                            <img src="https://img.icons8.com/color/48/000000/html-5.png" />
-                            <img src="https://img.icons8.com/color/48/000000/css3.png" />
-                            <img src="https://img.icons8.com/color/48/000000/javascript.png" />
-                            <img src="https://img.icons8.com/ios-filled/50/000000/mysql-logo.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/visual-studio-code-2019.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/github.png" />
-                            <img src="img/XAMPP-icon.png" height="50">
-                            <img src="https://img.icons8.com/color/48/000000/bootstrap.png" />
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-lg-12 shadow-lg p-5 project-box mb-3" data-aos="zoom-in">
-
-                        <div class="text-center border-bottom border-light mb-2">
-                            <h4 class="text-white">CONTENT MANAGEMENT SYSTEM (CMS)</h4>
-                        </div>
-
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home"
-                                    role="tab" aria-controls="pills-home" aria-selected="true">S&S Holdings</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile"
-                                    role="tab" aria-controls="pills-profile" aria-selected="false">Wetea</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                aria-labelledby="pills-home-tab">
-
-
-                                <h5 class="text-left "><a href="https://s-sholding.webflow.io/" class="text-white"> View
-                                        Website</a></h5>
-
-                                <div id="sands" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-bs-target="#sands" data-bs-slide-to="0" class="active"></li>
-                                        <li data-bs-target="#sands" data-bs-slide-to="1"></li>
-                                        <li data-bs-target="#sands" data-bs-slide-to="2"></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="img/SSholdings/S&Sholding.PNG" class="d-block w-100" alt="..."
-                                                style="max-width:900px; max-height:600px !important;">
-                                            <div class="carousel-caption d-none d-md-block">
-
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <a class="carousel-control-prev" href="#sands" role="button" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                    </a>
-                                    <a class="carousel-control-next" href="#sands" role="button" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                    </a>
-                                </div>
-
-
-                            </div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                aria-labelledby="pills-profile-tab">
-
-                                <h5 class="text-left"><a href="https://wetea.webflow.io" class="text-white"> View
-                                        Website</a></h5>
-
-                                <div id="sands" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-bs-target="#sands" data-bs-slide-to="0" class="active"></li>
-                                        <li data-bs-target="#sands" data-bs-slide-to="1"></li>
-                                        <li data-bs-target="#sands" data-bs-slide-to="2"></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="img/WeTea/wetea.PNG" class="d-block w-100" alt="..."
-                                                style="max-width:900px; max-height:600px !important;">
-                                            <div class="carousel-caption d-none d-md-block">
-
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <a class="carousel-control-prev" href="#sands" role="button" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                                    </a>
-                                    <a class="carousel-control-next" href="#sands" role="button" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="programs text-center bg-light mt-2">
-                            <h4>CMS AND MULTIMEDIA TOOLS</h4>
-                            <img src="https://img.icons8.com/color/48/000000/webflow.png" />
-                            <img src="https://img.icons8.com/fluent/48/000000/adobe-photoshop.png" />
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-lg-12 shadow-lg p-5 project-box mb-3" data-aos="zoom-in">
-
-                        <div class="text-center border-bottom border-light mb-2">
-                            <h4 class="text-white">LOGOS</h4>
-                        </div>
-
-                        <div id="Logos" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#Logos" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#Logos" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#Logos" data-bs-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner" style="max-width:900px; max-height:700px !important;">
-                                <div class="carousel-item active" data-bs-interval="10000">
-                                    <img src="img/Precise Logo.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="img/Exquis.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/MKT FINAL.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/GWT.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/8wayOnline.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/WeTea/WeTeaLogo.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Sunflower Logo.png" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#Logos" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                            </a>
-                            <a class="carousel-control-next" href="#Logos" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                            </a>
-                        </div>
-
-                        <div class="programs text-center bg-light mt-2">
-                            <h4>MULTIMEDIA TOOLS</h4>
-                            <img src="https://img.icons8.com/fluent/48/000000/adobe-photoshop.png" />
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-lg-12 shadow-lg p-5 project-box mb-3" data-aos="zoom-in">
-
-                        <div class="text-center border-bottom border-light mb-2">
-                            <h4 class="text-white">POSTERS</h4>
-                        </div>
-
-                        <div id="Posters" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#Posters" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#Posters" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#Posters" data-bs-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner d-block" style="max-width:1000px; max-height:800px !important;">
-                                <div class="carousel-item active" data-bs-interval="10000">
-                                    <img src="img/Mercancias/LumierePSD.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="img/Mercancias/we'reBackLumiere.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/we'reMercancias2.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Avocado Shake.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Strawberry Shake.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Mango shake.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Strawberry Special.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/StayTuned!.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/WeAreOpen.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-
-                                    <img src="img/Mercancias/HowToOrder.png" class="d-block w-100" alt="..." style="
-                                            max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Frozen Berries.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/PremiumImportedFruits.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/Mercancias/Page 1.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:800px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#Posters" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                            </a>
-                            <a class="carousel-control-next" href="#Posters" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                            </a>
-                        </div>
-
-                        <div class="programs text-center bg-light mt-2">
-                            <h4>MULTIMEDIA TOOLS</h4>
-                            <img src="https://img.icons8.com/fluent/48/000000/adobe-photoshop.png" />
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-12 shadow-lg p-5 project-box mb-3" data-aos="zoom-in">
-
-                        <div class="text-center border-bottom border-light mb-2">
-                            <h4 class="text-white">EVENTS</h4>
-                        </div>
-
-                        <div id="Events" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#Events" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#Events" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#Events" data-bs-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner d-block" style="max-width:1000px; max-height:900px !important;">
-                                <div class="carousel-item active" data-bs-interval="10000">
-                                    <img src="img/Eagles/LEDCIRCLENAMES.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:900px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="img/Eagles/InvitationMEC.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:900px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="img/Eagles/FINAL.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:900px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="img/Eagles/PhotoTarpulinDesign.png" class="d-block w-100" alt="..."
-                                        style="max-width:900px; max-height:900px !important;">
-                                    <div class="carousel-caption d-none d-md-block">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#Events" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-                            </a>
-                            <a class="carousel-control-next" href="#Events" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-                            </a>
-                        </div>
-
-                        <div class="programs text-center bg-light mt-2">
-                            <h4>MULTIMEDIA TOOLS</h4>
-                            <img src="https://img.icons8.com/fluent/48/000000/adobe-photoshop.png" />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-        <!--PROJECTS-->
-    </div>
-</body>
-
-
-<script src="particles.js"></script>
-<script src="js/app.js"></script>
-<script src="js/index.js"></script>
-
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-    AOS.init();
+(function(){var b=document.getElementById("menuBtn"),m=document.getElementById("mobileMenu");if(b&&m){b.addEventListener("click",function(){m.classList.toggle("hidden");});m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){m.classList.add("hidden");});});}})();
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-</script>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-</script>
-
-</html>
+</body></html>
