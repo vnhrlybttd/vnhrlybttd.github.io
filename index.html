@@ -112,7 +112,6 @@ button{font:inherit;color:inherit}
 .avatar{width:132px;height:132px;margin:0 auto 28px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--hair),0 14px 40px rgba(0,0,0,.18)}
 .hero .eyebrow{margin-bottom:14px}
 .cta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 28px;margin-top:36px}
-.now{margin-top:24px;color:var(--text-3);font-size:.875rem}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:820px;margin:clamp(56px,8vw,88px) auto 0;padding-top:36px;border-top:1px solid var(--hair)}
 .stat b{display:block;font-size:clamp(2rem,5vw,3rem);line-height:1;font-weight:700;letter-spacing:-.035em}
 .stat span{display:block;margin-top:10px;color:var(--text-2);font-size:.9375rem;line-height:1.35}
@@ -234,7 +233,7 @@ button{font:inherit;color:inherit}
 
 /* Contact */
 .contact{text-align:center}
-.contact-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;max-width:900px;margin:clamp(56px,7vw,80px) auto 0;padding-top:36px;border-top:1px solid var(--hair)}
+.contact-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:760px;margin:clamp(56px,7vw,80px) auto 0;padding-top:36px;border-top:1px solid var(--hair)}
 .contact-list dt{color:var(--text-2);font-size:.875rem}
 .contact-list dd{margin-top:4px;font-weight:500;overflow-wrap:anywhere}
 .contact-list a:hover{color:var(--accent)}
@@ -261,7 +260,6 @@ button{font:inherit;color:inherit}
 .ticks li{position:relative;padding-left:32px;color:var(--text-2);line-height:1.55}
 .ticks li::before{content:"";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--amber-soft)}
 .ticks li::after{content:"";position:absolute;left:5px;top:7px;width:10px;height:10px;background:var(--accent);-webkit-mask:var(--check) center/contain no-repeat;mask:var(--check) center/contain no-repeat}
-.note{margin-top:28px;padding:16px 18px;border-radius:14px;background:var(--amber-soft);line-height:1.55}
 .sheet-body .tags{margin-top:12px}
 
 /* Hero arrives on first paint with no JS dependency; everything below reveals on scroll, only when JS can bring it back */
@@ -286,7 +284,7 @@ button{font:inherit;color:inherit}
 }
 @media (max-width:760px){
   .job{grid-template-columns:minmax(0,1fr)}
-  .contact-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+  .contact-list{grid-template-columns:minmax(0,1fr);gap:20px}
   .cert-groups{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
@@ -344,8 +342,7 @@ button{font:inherit;color:inherit}
       <a class="btn" href="#work">See my work</a>
       <a class="link" href="Vin_Battad_Resume.pdf" target="_blank" rel="noopener">View resume</a>
     </div>
-    <p class="now rise" style="--i:5">Currently at Tribute Technology. Previously ServiceRocket and Ceana Technology.</p>
-    <ul class="stats rise" style="--i:6">
+    <ul class="stats rise" style="--i:5">
       <li class="stat"><b>5+</b><span>years building on NetSuite</span></li>
       <li class="stat"><b>25+</b><span>NetSuite solutions shipped</span></li>
       <li class="stat"><b>12</b><span>platform certifications</span></li>
@@ -590,29 +587,7 @@ button{font:inherit;color:inherit}
         <p class="sub">What I build when no one has filed a ticket, plus the web and full stack projects that came before ERP.</p>
       </header>
       <div class="bento two">
-        <article class="tile reveal">
-          <div class="copy">
-            <p class="eyebrow">Python · Market data</p>
-            <h3>Gold strategy research desk</h3>
-            <p class="sum">A Python desk on MetaTrader 5 that tests trading ideas honestly, with costs, splits and audits built in.</p>
-          </div>
-          <div class="art">
-            <svg viewBox="0 0 520 200" aria-hidden="true">
-              <path class="sh" d="M0 30.5H520M0 80.5H520M0 130.5H520"/>
-              <path class="s2" fill="none" stroke-dasharray="4 5" d="M0 180.5H520"/>
-              <path class="fs pop" d="M0 180L40 168L80 174L120 146L160 152L200 124L240 136L280 132L320 102L360 114L400 86L440 94L480 62L520 48V180Z"/>
-              <path class="sa draw" pathLength="1" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M0 180L40 168L80 174L120 146L160 152L200 124L240 136L280 132L320 102L360 114L400 86L440 94L480 62L520 48"/>
-              <circle class="fa pop" style="--n:3" cx="120" cy="146" r="4.5"/>
-              <circle class="fa pop" style="--n:5" cx="200" cy="124" r="4.5"/>
-              <circle class="fa pop" style="--n:7" cx="320" cy="102" r="4.5"/>
-              <circle class="fa pop" style="--n:9" cx="400" cy="86" r="4.5"/>
-              <circle class="fa pop" style="--n:11" cx="480" cy="62" r="4.5"/>
-            </svg>
-          </div>
-          <button class="plus" type="button" data-sheet="t-gold" aria-label="More about the gold strategy research desk"><span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
-        </article>
-
-        <article class="tile reveal" style="--i:1">
+        <article class="tile wide span-2 reveal">
           <div class="copy">
             <p class="eyebrow">Pine Script v6</p>
             <h3>Smart Money Concepts indicator</h3>
@@ -805,7 +780,6 @@ button{font:inherit;color:inherit}
       </div>
       <dl class="contact-list reveal">
         <div><dt>Email</dt><dd><a href="mailto:vhbattad@gmail.com">vhbattad@gmail.com</a></dd></div>
-        <div><dt>Phone</dt><dd><a href="tel:+639054983141">+63 905 498 3141</a></dd></div>
         <div><dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/vbattad" target="_blank" rel="noopener">linkedin.com/in/vbattad</a></dd></div>
         <div><dt>Location</dt><dd>Manila, Philippines</dd></div>
       </dl>
@@ -928,24 +902,6 @@ button{font:inherit;color:inherit}
   </ul>
   <h3>Built with</h3>
   <ul class="tags"><li>User Event</li><li>SuiteScript 2.x</li></ul>
-</template>
-
-<template id="t-gold">
-  <p class="eyebrow">Python · Market data</p>
-  <h2 id="sheet-title">Gold strategy research desk</h2>
-  <p class="lead">A personal research tool for testing gold trading strategies with the same rigor I bring to financial data.</p>
-  <h3>Why I built it</h3>
-  <p>Strategy vendors advertise win rates that are hard to verify. I wanted a tool that measures them properly before any real money is involved.</p>
-  <h3>What I built</h3>
-  <ul class="ticks">
-    <li>Full history backtests with train and test splits and realistic trading costs, reported in R multiples rather than dollars.</li>
-    <li>Ablation runs and geometry checks that caught a look ahead bug and an inverted stop in earlier versions, before they could mislead anyone.</li>
-    <li>A local web dashboard with a live chart, session boxes, switchable strategies and a signal book that follows every setup to its target or stop.</li>
-    <li>Order execution locked to demo accounts, with daily limits and a kill switch.</li>
-  </ul>
-  <p class="note">Of five vendor strategies tested over the full history, none matched its advertised win rate and two lost money after costs. That is exactly what the desk is for.</p>
-  <h3>Built with</h3>
-  <ul class="tags"><li>Python</li><li>MetaTrader 5</li><li>Lightweight Charts</li><li>Unit tests</li></ul>
 </template>
 
 <template id="t-smc">
