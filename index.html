@@ -269,8 +269,16 @@ button{font:inherit;color:inherit}
 /* Hero arrives on first paint with no JS dependency; everything below reveals on scroll, only when JS can bring it back */
 .rise{animation:rise .9s var(--ease) both;animation-delay:calc(var(--i,0)*70ms)}
 @keyframes rise{from{opacity:0;transform:translateY(20px)}}
-.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
-.js .reveal.in{opacity:1;transform:none}
+.js .reveal{opacity:0;translate:0 32px;transition:opacity .9s var(--ease),translate .9s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
+.js .reveal.above{translate:0 -32px}
+.js .reveal.in{opacity:1;translate:none}
+
+/* Back to top */
+.to-top{position:fixed;right:calc(20px + env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));z-index:40;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:var(--glass-thick);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);color:var(--text);box-shadow:0 0 0 1px var(--hair),0 8px 24px rgba(0,0,0,.16);cursor:pointer;opacity:0;scale:.8;visibility:hidden;transition:opacity .3s var(--ease),scale .45s var(--ease),visibility 0s .3s;-webkit-tap-highlight-color:transparent}
+.to-top.show{opacity:1;scale:1;visibility:visible;transition-delay:0s}
+.to-top:hover{color:var(--accent)}
+.to-top:active{scale:.9;transition-duration:.1s}
+.to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 @media (max-width:1023px){
   .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -310,12 +318,13 @@ button{font:inherit;color:inherit}
 @media (max-width:520px){.caps{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .reveal{transform:none!important;transition:opacity .4s ease!important}
+  .js .reveal{translate:none!important;transition:opacity .4s ease!important}
+  .to-top{scale:1!important}
   .rise{animation:none}
   .js .grow,.js .grow-x,.js .pop,.js .draw{transition:none!important;transform:none!important;opacity:1!important;stroke-dashoffset:0!important}
   .menu,.menu.open{transform:none}
 }
-@media (prefers-reduced-transparency:reduce){.nav,.menu{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-reduced-transparency:reduce){.nav,.menu,.to-top{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}}
 </style>
 </head>
 <body>
@@ -923,6 +932,8 @@ button{font:inherit;color:inherit}
   </div>
 </dialog>
 
+<button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></button>
+
 <script>
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
@@ -965,18 +976,21 @@ button{font:inherit;color:inherit}
   }, { rootMargin: '-45% 0px -50% 0px' });
   $$('main section[id]').forEach(s => spy.observe(s));
 
-  // Scroll reveal. .seen stays on so tile art keeps its drawn state
-  const io = new IntersectionObserver(entries => entries.forEach(({ isIntersecting, target: el }) => {
-    if (!isIntersecting) return;
-    io.unobserve(el);
-    el.classList.add('in', 'seen');
-    el.addEventListener('transitionend', function done(e) {
-      if (e.target !== el) return;
-      el.classList.remove('reveal', 'in'); // hand transform back to the element's own press feedback
-      el.removeEventListener('transitionend', done);
-    });
+  // Scroll reveal that replays: hide again once off screen, on the side it left from, so it re-enters from that edge
+  const io = new IntersectionObserver(entries => entries.forEach(({ isIntersecting, boundingClientRect: r, target: el }) => {
+    el.classList.toggle('in', isIntersecting);
+    el.classList.toggle('seen', isIntersecting);
+    if (!isIntersecting) el.classList.toggle('above', r.top < 0);
   }), { rootMargin: '0px 0px -8% 0px' });
   $$('.reveal').forEach(el => io.observe(el));
+
+  // Back to top, shown once the hero is out of view
+  const up = $('.to-top');
+  new IntersectionObserver(([e]) => up.classList.toggle('show', !e.isIntersecting)).observe($('.hero'));
+  up.addEventListener('click', () => {
+    scrollTo({ top: 0, behavior: still.matches ? 'auto' : 'smooth' });
+    $('.brand').focus({ preventScroll: true });
+  });
 
   // Project sheet. Grows out of the tile that opened it; on phones it is a bottom sheet you can drag away.
   const sheet = $('#sheet'), panel = $('.sheet-panel', sheet), scrim = $('.sheet-scrim', sheet);
