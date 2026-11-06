@@ -86,7 +86,7 @@ button{font:inherit;color:inherit}
 .menu.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s var(--ease),transform .4s var(--ease)}
 .menu a{display:block;padding:14px 0;border-bottom:1px solid var(--hair);font-size:1.75rem;font-weight:650;letter-spacing:-.025em}
 .menu a:last-child{border:0;color:var(--accent)}
-@media (max-width:820px){.nav-links,.nav .btn-sm{display:none}.menu-btn{display:block}}
+@media (max-width:820px){.nav-links{display:none}.menu-btn{display:block}}
 
 /* Desktop: the top bar scrolls away and a rail of lines on the right edge takes over section navigation */
 .rail{display:none}
@@ -112,7 +112,6 @@ button{font:inherit;color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;background:var(--amber);color:var(--on-amber);font-weight:600;letter-spacing:-.01em;transition:background-color .2s,transform .12s ease-out;-webkit-tap-highlight-color:transparent}
 .btn:hover{background:var(--amber-hi)}
 .btn:active{transform:scale(.96);transition-duration:.06s}
-.btn-sm{min-height:30px;padding:0 14px;font-size:.8125rem}
 .link{display:inline-flex;align-items:center;gap:3px;color:var(--accent);font-weight:500}
 .link::after{content:"›";font-size:1.3em;line-height:1;transform:translateY(-.05em);transition:transform .25s var(--ease)}
 .link:hover{text-decoration:underline;text-underline-offset:.2em}
@@ -356,7 +355,6 @@ button{font:inherit;color:inherit}
     <nav class="nav-links" aria-label="Sections">
       <a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-sm" href="Vin_Battad_Resume.pdf" target="_blank" rel="noopener">Resume</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
 </header>
