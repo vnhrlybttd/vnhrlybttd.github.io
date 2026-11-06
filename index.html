@@ -171,6 +171,8 @@ button{font:inherit;color:inherit}
 .more .h3{margin-bottom:24px}
 .groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
 .group-title{margin:0 0 12px 4px;color:var(--text-2);font-size:.9375rem;font-weight:600;letter-spacing:-.01em}
+.list+.group-title{margin-top:36px}
+.tile .tags+.link{display:inline-block;margin-top:16px}
 .list{padding:0 24px;border-radius:var(--r-card);background:var(--tile)}
 .alt .list{background:var(--raise)}
 .list>li{padding:20px 0;border-top:1px solid var(--hair)}
@@ -224,7 +226,9 @@ button{font:inherit;color:inherit}
 .certs .link{margin-top:8px;font-size:.875rem}
 
 /* Design gallery */
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:16px}
+.gallery .wide{grid-column:span 2;aspect-ratio:auto}
+.gallery .logo.wide{padding:6% 12%}
 .gallery figure{aspect-ratio:1;overflow:hidden;border-radius:var(--r-card);background:var(--tile)}
 .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .gallery figure:hover img{transform:scale(1.03)}
@@ -361,8 +365,8 @@ button{font:inherit;color:inherit}
         <article class="tile wide span-3 reveal">
           <div class="copy">
             <p class="eyebrow">Integration · Payments</p>
-            <h3>Wells Fargo ACH platform</h3>
-            <p class="sum">Customer debits and vendor direct deposits, run end to end inside NetSuite on the Wells Fargo API, from authorization forms to a live operations dashboard.</p>
+            <h3>Bank ACH platform</h3>
+            <p class="sum">Customer debits and vendor direct deposits, run end to end inside NetSuite on the bank's API, from authorization forms to a live operations dashboard.</p>
           </div>
           <div class="art">
             <svg viewBox="0 0 600 380" aria-hidden="true">
@@ -392,7 +396,7 @@ button{font:inherit;color:inherit}
               <g class="pop" style="--n:9"><circle class="fr s2" cx="436" cy="344" r="4.5" stroke-width="2"/><rect class="f2" x="450" y="340" width="72" height="8" rx="4"/><rect class="f2" x="546" y="340" width="36" height="8" rx="4"/></g>
             </svg>
           </div>
-          <button class="plus" type="button" data-sheet="t-wf" aria-label="More about the Wells Fargo ACH platform"><span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+          <button class="plus" type="button" data-sheet="t-wf" aria-label="More about the bank ACH platform"><span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
         </article>
 
         <article class="tile span-2 reveal">
@@ -492,7 +496,7 @@ button{font:inherit;color:inherit}
           <div class="copy">
             <p class="eyebrow">Compliance · Integration</p>
             <h3>W9 portal and compliance API</h3>
-            <p class="sum">Collects and tracks vendor W9s, and answers W9 status checks from ONESOURCE.</p>
+            <p class="sum">Collects and tracks vendor W9s, and answers W9 status checks from an outside tax compliance platform.</p>
           </div>
           <div class="art">
             <svg viewBox="0 0 560 200" aria-hidden="true">
@@ -563,7 +567,7 @@ button{font:inherit;color:inherit}
           <div class="reveal" style="--i:1">
             <h4 class="group-title">ServiceRocket, 2022 to 2023</h4>
             <ul class="list">
-              <li><strong>Web service integration for Cadran</strong><p>Batch creation of custom records through a third party web service for a Netherlands client, with solution design and a full requirements document.</p><ul class="tags"><li>Map/Reduce</li><li>Suitelet</li><li>SQL</li></ul></li>
+              <li><strong>Web service integration</strong><p>Batch creation of custom records through a third party web service for a Netherlands client, with solution design and a full requirements document.</p><ul class="tags"><li>Map/Reduce</li><li>Suitelet</li><li>SQL</li></ul></li>
               <li><strong>Procure to pay batch integration</strong><p>Procure to pay batch processing with a third party app for an Australian client, later refactored into clean, maintainable code.</p><ul class="tags"><li>Suitelet</li><li>Map/Reduce</li><li>Handlebars</li></ul></li>
               <li><strong>Dedicated developer for an enterprise client</strong><p>Embedded developer for a large Australian account, designing solutions, building reporting Suitelets and reprocessing tools.</p><ul class="tags"><li>Map/Reduce</li><li>User Event</li><li>Suitelet</li></ul></li>
               <li><strong>Item receipt file automation</strong><p>On save, a Map/Reduce builds a file from a saved search and emails it straight to the customer. Delivered in 4 hours against a 5 day estimate.</p><ul class="tags"><li>Map/Reduce</li><li>User Event</li><li>Saved Search</li></ul></li>
@@ -573,11 +577,10 @@ button{font:inherit;color:inherit}
             </ul>
             <h4 class="group-title">Ceana Technology, 2021 to 2022</h4>
             <ul class="list">
-              <li><strong>Payment gateway integration for 2C2P</strong><p>SFTP based payment gateway for a Singapore client that creates transactions in NetSuite automatically, with a bank reconciliation dashboard, custom records and custom PDF layouts.</p><ul class="tags"><li>Suitelet</li><li>Map/Reduce</li><li>User Event</li><li>PDF</li></ul></li>
+              <li><strong>Payment gateway integration</strong><p>SFTP based payment gateway for a Singapore client that creates transactions in NetSuite automatically, with a bank reconciliation dashboard, custom records and custom PDF layouts.</p><ul class="tags"><li>Suitelet</li><li>Map/Reduce</li><li>User Event</li><li>PDF</li></ul></li>
               <li><strong>Allocations Suitelet</strong><p>A customized allocations Suitelet for a Philippine client, built alongside the technical lead.</p><ul class="tags"><li>Suitelet</li><li>User Event</li><li>jQuery</li></ul></li>
               <li><strong>Scrap booking and price population</strong><p>Automatic scrap booking and price population on transaction records.</p><ul class="tags"><li>Client Script</li><li>User Event</li></ul></li>
               <li><strong>Barcode PDF and custom form popup</strong><p>A custom form popup with a printable PDF barcode.</p><ul class="tags"><li>Suitelet</li><li>Client Script</li><li>PDF</li></ul></li>
-            </ul></li>
             </ul>
           </div>
         </div>
@@ -590,10 +593,9 @@ button{font:inherit;color:inherit}
       <header class="head reveal">
         <p class="eyebrow">Beyond NetSuite</p>
         <h2 class="h2">Earlier web and full stack work.</h2>
-        <p class="sub">The web and full stack projects that came before ERP.</p>
       </header>
       <div class="bento two">
-        <article class="tile reveal">
+        <article class="tile wide span-2 reveal">
           <div class="copy">
             <p class="eyebrow">Full stack</p>
             <h3>Payroll system with face recognition</h3>
@@ -605,12 +607,24 @@ button{font:inherit;color:inherit}
 
         <article class="tile reveal" style="--i:1">
           <div class="copy">
-            <p class="eyebrow">Web</p>
-            <h3>CMS websites for S and S Holdings and WeTea</h3>
-            <p class="sum">Brand websites built in Webflow so each team could update its own content with ease.</p>
-            <ul class="tags"><li>Webflow</li><li>CMS</li><li>Design</li></ul>
+            <p class="eyebrow">Freelance web</p>
+            <h3>S and S Holdings</h3>
+            <p class="sum">Website for a Korean aviator school, built in Webflow with a CMS so the team can update its own content.</p>
+            <ul class="tags"><li>Webflow</li><li>CMS</li></ul>
+            <a class="link" href="https://s-sholding.webflow.io/" target="_blank" rel="noopener">Visit site</a>
           </div>
           <div class="shot"><img src="img/ss-holdings.webp" width="1200" height="645" alt="S and S Holdings website" loading="lazy" decoding="async"></div>
+        </article>
+
+        <article class="tile reveal" style="--i:2">
+          <div class="copy">
+            <p class="eyebrow">Freelance web</p>
+            <h3>WeTea</h3>
+            <p class="sum">Website for a milk tea shop, built in Webflow with a CMS so the owners can update products and content.</p>
+            <ul class="tags"><li>Webflow</li><li>CMS</li></ul>
+            <a class="link" href="https://wetea.webflow.io/" target="_blank" rel="noopener">Visit site</a>
+          </div>
+          <div class="shot"><img src="img/wetea-site.webp" width="1200" height="670" alt="WeTea website" loading="lazy" decoding="async"></div>
         </article>
       </div>
     </div>
@@ -643,15 +657,15 @@ button{font:inherit;color:inherit}
       <ol class="jobs">
         <li class="job reveal">
           <div class="when"><b>Dec 2023 to present</b><span data-since="2023-12">2 yrs 11 mos</span><span>Remote · Middleton, Wisconsin</span></div>
-          <div><h3>Tribute Technology</h3><p class="role">NetSuite Administrator and Developer</p><p class="desc">Primary administrator and developer for NetSuite, also supporting Salesforce and Gladly. I built the Wells Fargo ACH platform, A/R and A/P netting for funeral home partners, headcount driven expense allocations, the W9 compliance portal and the collections tools the A/R team works from, along with approvals in Microsoft Teams and a long list of dashboards and reports. I regularly take on work beyond core development to keep the business moving.</p></div>
+          <div><h3>Tribute Technology</h3><p class="role">NetSuite Administrator and Developer</p><p class="desc">Primary administrator and developer for NetSuite, also supporting Salesforce and Gladly. I built the bank ACH platform, A/R and A/P netting for partners, headcount driven expense allocations, the W9 compliance portal and the collections tools the A/R team works from, along with approvals in Microsoft Teams and a long list of dashboards and reports. I regularly take on work beyond core development to keep the business moving.</p></div>
         </li>
         <li class="job reveal">
           <div class="when"><b>Apr 2022 to Aug 2023</b><span>1 yr 5 mos</span><span>Remote · Palo Alto, California</span></div>
-          <div><h3>ServiceRocket</h3><p class="role">NetSuite Associate Technical Consultant</p><p class="desc">Delivered NetSuite integrations and customizations for clients in Australia and the Netherlands, reporting directly to clients and third party vendors. Built a web service integration for Cadran, procure to pay batch integrations and file based automations, wrote estimates, solution designs and technical requirements documents, and trained client users.</p></div>
+          <div><h3>ServiceRocket</h3><p class="role">NetSuite Associate Technical Consultant</p><p class="desc">Delivered NetSuite integrations and customizations for clients in Australia and the Netherlands, reporting directly to clients and third party vendors. Built a web service integration, procure to pay batch integrations and file based automations, wrote estimates, solution designs and technical requirements documents, and trained client users.</p></div>
         </li>
         <li class="job reveal">
           <div class="when"><b>Aug 2021 to Apr 2022</b><span>9 mos</span><span>Remote · Cavite, Philippines</span></div>
-          <div><h3>Ceana Technology</h3><p class="role">NetSuite Associate Developer</p><p class="desc">Built an SFTP payment gateway integration and bank reconciliation dashboard for 2C2P in Singapore, and a custom allocations Suitelet for a Philippine client. Developed scripts, workflows and PDF customizations alongside senior developers, and supported existing solutions.</p></div>
+          <div><h3>Ceana Technology</h3><p class="role">NetSuite Associate Developer</p><p class="desc">Built an SFTP payment gateway integration and bank reconciliation dashboard for a Singapore client, and a custom allocations Suitelet for a Philippine client. Developed scripts, workflows and PDF customizations alongside senior developers, and supported existing solutions.</p></div>
         </li>
         <li class="job reveal">
           <div class="when"><b>Jan 2020 to Jan 2021</b><span>1 yr 1 mo</span><span>Remote · Manila, Philippines</span></div>
@@ -681,7 +695,7 @@ button{font:inherit;color:inherit}
         <ul class="chips"><li>SuiteScript</li><li>SuiteFlow</li><li>SuiteAnalytics</li><li>SuiteQL</li><li>Saved Searches</li><li>Map/Reduce</li><li>Suitelet</li><li>User Event</li><li>Client Script</li><li>RESTlet</li><li>Portlet</li><li>SuiteBuilder</li><li>Advanced Revenue Management</li></ul>
       </div>
       <div class="skill-cols">
-        <div class="reveal"><h3>Integrations</h3><ul class="chips"><li>Wells Fargo API</li><li>ONESOURCE</li><li>Microsoft Teams</li><li>Salesforce via Breadwinner</li><li>Stripe</li><li>SFTP payment gateway</li><li>Celigo</li><li>REST APIs</li></ul><h3 style="margin-top:28px">Administration</h3><ul class="chips"><li>HubSpot</li><li>Gladly</li><li>Aircall</li></ul><h3 style="margin-top:28px">Also worked with</h3><ul class="chips"><li>Shopify</li><li>WooCommerce</li><li>Slack</li><li>Discord</li><li>Clockify</li></ul></div>
+        <div class="reveal"><h3>Integrations</h3><ul class="chips"><li>Banking APIs</li><li>Tax compliance APIs</li><li>Microsoft Teams</li><li>Salesforce via Breadwinner</li><li>Stripe</li><li>SFTP payment gateway</li><li>Celigo</li><li>REST APIs</li></ul><h3 style="margin-top:28px">Administration</h3><ul class="chips"><li>HubSpot</li><li>Gladly</li><li>Aircall</li></ul><h3 style="margin-top:28px">Also worked with</h3><ul class="chips"><li>Shopify</li><li>WooCommerce</li><li>Slack</li><li>Discord</li><li>Clockify</li></ul></div>
         <div class="reveal" style="--i:1"><h3>Development</h3><ul class="chips"><li>JavaScript</li><li>Python</li><li>SQL</li><li>PHP</li><li>Laravel</li><li>Vue.js</li><li>HTML and CSS</li><li>MySQL</li><li>PostgreSQL</li><li>Postman</li><li>Bootstrap</li><li>Git and GitHub</li></ul></div>
         <div class="reveal" style="--i:2"><h3>Design and media</h3><ul class="chips"><li>Webflow</li><li>Adobe Photoshop</li><li>Adobe Illustrator</li><li>Premiere Pro</li><li>Filmora</li></ul></div>
       </div>
@@ -747,15 +761,19 @@ button{font:inherit;color:inherit}
       <header class="head reveal">
         <p class="eyebrow">Beyond code</p>
         <h2 class="h2">Branding and design.</h2>
-        <p class="sub">Before ERP, I spent years building brands. Logos, posters and event design for clients in retail and food.</p>
+        <p class="sub">Before ERP, I spent years building brands in Adobe Photoshop and Illustrator. Logos and posters for clubs, food brands and corporate clients.</p>
       </header>
       <div class="gallery">
-        <figure class="logo reveal"><img src="img/logo-mkt.webp" width="640" height="527" alt="Makati Eagles Club logo" loading="lazy" decoding="async"></figure>
+        <figure class="logo reveal"><img src="img/logo-mkt.webp" width="640" height="527" alt="Fraternal Order of Eagles, Philippine Eagles Makati logo" loading="lazy" decoding="async"></figure>
         <figure class="reveal" style="--i:1"><img src="img/poster-avocado.webp" width="800" height="800" alt="Avocado shake poster" loading="lazy" decoding="async"></figure>
         <figure class="logo reveal" style="--i:2"><img src="img/logo-wetea.webp" width="640" height="513" alt="WeTea logo" loading="lazy" decoding="async"></figure>
+        <figure class="logo wide reveal" style="background:#1b262c"><img src="img/logo-precise.webp" width="800" height="261" alt="Precise Construction and Trading Corporation logo" loading="lazy" decoding="async"></figure>
+        <figure class="logo reveal" style="--i:1;background:#011031"><img src="img/logo-gwt.webp" width="540" height="440" alt="Greener World Technology Management Corporation logo" loading="lazy" decoding="async"></figure>
         <figure class="reveal"><img src="img/poster-strawberry.webp" width="800" height="800" alt="Strawberry shake poster" loading="lazy" decoding="async"></figure>
         <figure class="logo reveal" style="--i:1"><img src="img/logo-sunflower.webp" width="640" height="249" alt="Marites logo" loading="lazy" decoding="async"></figure>
         <figure class="reveal" style="--i:2"><img src="img/poster-mango.webp" width="800" height="800" alt="Mango shake poster" loading="lazy" decoding="async"></figure>
+        <figure class="logo reveal" style="background:#000"><img src="img/logo-exquis.webp" width="680" height="320" alt="Exquis Solutions Management Services logo" loading="lazy" decoding="async"></figure>
+        <figure class="logo wide reveal" style="--i:1;background:#252d40"><img src="img/logo-hailux.webp" width="700" height="290" alt="Hailux Holdings Corporation logo" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </section>
@@ -784,13 +802,13 @@ button{font:inherit;color:inherit}
 
 <template id="t-wf">
   <p class="eyebrow">Integration · Payments</p>
-  <h2 id="sheet-title">Wells Fargo ACH platform</h2>
+  <h2 id="sheet-title">Bank ACH platform</h2>
   <p class="lead">A complete ACH operation inside NetSuite. Customers authorize debits, partners get paid by direct deposit, and finance follows every payment from one dashboard.</p>
   <h3>The problem</h3>
   <p>Collecting from customers and paying partners leaned on checks, manual entry and a bank portal that lived outside NetSuite. Reconciling the two sides took hours, and mistakes were easy to make.</p>
   <h3>What I built</h3>
   <ul class="ticks">
-    <li>ACH authorization forms for customers and vendors, with bank account ownership checked through the Wells Fargo account validation API.</li>
+    <li>ACH authorization forms for customers and vendors, with bank account ownership checked through the bank's account validation API.</li>
     <li>Automatic and manual debit runs on Map/Reduce, with batch history and status tracking that flags rejected, mismatched and stuck payments.</li>
     <li>An operations dashboard with a payments overview, a ready to debit queue, upcoming automatic debits, reports and logs, in light and dark mode.</li>
     <li>Direct deposit for vendor payouts in place of paper checks, with onboarding emails and secure tokenized links to the form.</li>
@@ -836,7 +854,7 @@ button{font:inherit;color:inherit}
 <template id="t-net">
   <p class="eyebrow">Finance automation</p>
   <h2 id="sheet-title">A/R and A/P netting</h2>
-  <p class="lead">Funeral home partners are both customers and vendors. This settles both sides of the relationship in one guided run.</p>
+  <p class="lead">Partners are both customers and vendors. This settles both sides of the relationship in one guided run.</p>
   <h3>The problem</h3>
   <p>Partners owed invoices while also earning commissions. Settling the two meant spreadsheets, manual journal entries and balances that drifted apart.</p>
   <h3>What I built</h3>
@@ -875,7 +893,7 @@ button{font:inherit;color:inherit}
   <ul class="ticks">
     <li>A secure W9 portal and onboarding emails that replaced manual collection.</li>
     <li>Employee and supervisor dashboards with a stage by stage queue summary, escalations and exhausted effort tracking.</li>
-    <li>A RESTlet that lets ONESOURCE look up a vendor's W9 status in real time.</li>
+    <li>A RESTlet that lets an outside tax compliance platform look up a vendor's W9 status in real time.</li>
   </ul>
   <h3>Built with</h3>
   <ul class="tags"><li>Suitelet</li><li>RESTlet</li><li>SuiteQL</li><li>Email templates</li></ul>
